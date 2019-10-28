@@ -1,0 +1,25 @@
+$grey: #3c3744;
+$highlight-blue: #090c9b;
+$blue: #3d52d5;
+$light-blue: #b4c5e4;
+$white: #fbfff1;
+
+@mixin stoke() {
+  font-family: "Stoke", serif;
+}
+
+.top-bar {
+  width: 100%;
+  min-height: 10px;
+  background-color: $grey;
+  input {
+    border: none;
+    margin: 0.5%;
+    width: 99%;
+    height: 40px;
+    font-size: 16pt;
+    text-align: center;
+    @include stoke();
+    background-color: $light-blue;
+  }
+}
