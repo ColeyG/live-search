@@ -8,18 +8,24 @@ $white: #fbfff1;
   font-family: "Stoke", serif;
 }
 
+body {
+  background: linear-gradient(45deg, darken($grey, 10%), darken($grey, 15%));
+  height: 100vh;
+  overflow: hidden;
+}
 .top-bar {
   width: 100%;
   min-height: 10px;
   background-color: $grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   input {
     border: none;
-    margin: 0.5%;
-    width: 99%;
+    width: 98%;
+    margin: 10px;
     height: 40px;
     font-size: 16pt;
-    text-align: center;
     @include stoke();
-    background-color: $light-blue;
   }
 }
