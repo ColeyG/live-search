@@ -10,6 +10,12 @@ const cardLimit = 10;
 const cardSection = document.querySelector('.cards');
 let searchTimer;
 
+const clearCards = () => {
+  while (cardSection.firstChild) {
+    cardSection.removeChild(cardSection.firstChild);
+  }
+};
+
 const displayCard = (card) => {
   const cardImg = document.createElement('img');
 
@@ -33,6 +39,7 @@ const search = (value) => {
 const keyPressHandler = (e) => {
   clearTimeout(searchTimer);
   searchTimer = setTimeout(() => {
+    clearCards();
     search(searchBar.value);
   }, searchTimeOffset);
 };
