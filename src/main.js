@@ -4,19 +4,19 @@ import 'babel-polyfill';
 import 'promise-polyfill/src/polyfill';
 import 'whatwg-fetch';
 
-const respDiv = document.querySelector('.response');
+const searchBar = document.querySelector('.search-bar');
+const searchTimeOffset = 500;
+let searchTimer;
 
-async function fetchData() {
-  await fetch('http://localhost:3000', { method: 'GET', mode: 'cors' })
-    .then((resp) => resp.text())
-    .then((data) => {
-      console.log(data);
-      respDiv.appendChild(document.createTextNode(data));
-    });
-}
-
-const initialize = () => {
-  fetchData();
+const search = (value) => {
+  console.log(value);
 };
 
-// initialize();
+const keyPressHandler = (e) => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => {
+    search(searchBar.value);
+  }, searchTimeOffset);
+};
+
+searchBar.addEventListener('input', keyPressHandler, false);
