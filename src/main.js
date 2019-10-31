@@ -6,10 +6,28 @@ import 'whatwg-fetch';
 
 const searchBar = document.querySelector('.search-bar');
 const searchTimeOffset = 500;
+const cardLimit = 10;
+const cardSection = document.querySelector('.cards');
 let searchTimer;
 
+const displayCard = (card) => {
+  const cardImg = document.createElement('img');
+
+  cardImg.className = 'card';
+
+  cardImg.src = card.image_uris.normal;
+
+  cardSection.append(cardImg);
+};
+
 const search = (value) => {
-  console.log(value);
+  fetch(`https://api.scryfall.com/cards/search?q=${value}`, { method: 'GET', mode: 'cors' })
+    .then((resp) => resp.json())
+    .then((data) => {
+      data.data.forEach((card) => {
+        displayCard(card);
+      });
+    });
 };
 
 const keyPressHandler = (e) => {
