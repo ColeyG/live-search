@@ -9,7 +9,7 @@ $white: #fbfff1;
 }
 
 body {
-  background: linear-gradient(45deg, darken($grey, 10%), darken($grey, 15%));
+  background: linear-gradient(45deg, darken($grey, 10%), darken($grey, 20%));
   height: 100vh;
   overflow: hidden;
 }
@@ -26,6 +26,8 @@ body {
     margin: 10px;
     height: 40px;
     font-size: 16pt;
+    padding-left: 10px;
+    box-sizing: border-box;
     @include stoke();
   }
 }
