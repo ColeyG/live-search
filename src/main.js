@@ -22,6 +22,7 @@ const displayCard = (card) => {
   cardImg.className = 'card';
 
   cardImg.src = card.image_uris.normal;
+  cardImg.alt = card.name;
 
   cardSection.append(cardImg);
 };
