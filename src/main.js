@@ -10,17 +10,7 @@ const colors = document.querySelectorAll('.color-filter');
 const cardSection = document.querySelector('.cards');
 const searchTimeOffset = 500;
 let searchTimer;
-let colorFilter;
-
-const actionBinds = {
-  colorToggle: (e) => {
-    colors.forEach((element) => {
-      element.style.filter = '';
-    });
-    e.target.style.filter = 'invert(1)';
-    colorFilter = e.target.id;
-  },
-};
+let colorFilter = '';
 
 const clearCards = () => {
   while (cardSection.firstChild) {
@@ -40,7 +30,11 @@ const displayCard = (card) => {
 };
 
 const search = (value) => {
-  fetch(`https://api.scryfall.com/cards/search?q=${value}`, { method: 'GET', mode: 'cors' })
+  let color = '';
+  if (colorFilter !== '') {
+    color = `+m=${colorFilter}`;
+  }
+  fetch(`https://api.scryfall.com/cards/search?q=${value}${color}`, { method: 'GET', mode: 'cors' })
     .then((resp) => resp.json())
     .then((data) => {
       clearCards();
@@ -55,6 +49,17 @@ const keyPressHandler = (e) => {
   searchTimer = setTimeout(() => {
     search(searchBar.value);
   }, searchTimeOffset);
+};
+
+const actionBinds = {
+  colorToggle: (e) => {
+    colors.forEach((element) => {
+      element.style.filter = '';
+    });
+    e.target.style.filter = 'invert(1)';
+    colorFilter = e.target.id;
+    search(searchBar.value);
+  },
 };
 
 searchBar.addEventListener('input', keyPressHandler, false);
