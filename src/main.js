@@ -30,11 +30,11 @@ const displayCard = (card) => {
 };
 
 const search = (value) => {
-  let color = '';
+  let query = `?q=${value}`;
   if (colorFilter !== '') {
-    color = `+m=${colorFilter}`;
+    query += `+m=${colorFilter}`;
   }
-  fetch(`https://api.scryfall.com/cards/search?q=${value}${color}`, { method: 'GET', mode: 'cors' })
+  fetch(`https://api.scryfall.com/cards/search${query}`, { method: 'GET', mode: 'cors' })
     .then((resp) => resp.json())
     .then((data) => {
       clearCards();
