@@ -9,6 +9,8 @@ $white: #fbfff1;
 }
 
 body {
+  height: 100vh;
+  overflow: hidden;
   background: linear-gradient(45deg, darken($grey, 10%), darken($grey, 20%));
 }
 .top-bar {
@@ -31,7 +33,7 @@ body {
   }
 }
 .cards {
-  max-height: 90vh;
+  max-height: 100%;
   overflow-y: auto;
   display: flex;
   justify-content: space-evenly;
