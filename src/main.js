@@ -43,6 +43,7 @@ const search = (value) => {
   fetch(`https://api.scryfall.com/cards/search?q=${value}`, { method: 'GET', mode: 'cors' })
     .then((resp) => resp.json())
     .then((data) => {
+      clearCards();
       data.data.forEach((card) => {
         displayCard(card);
       });
@@ -52,7 +53,6 @@ const search = (value) => {
 const keyPressHandler = (e) => {
   clearTimeout(searchTimer);
   searchTimer = setTimeout(() => {
-    clearCards();
     search(searchBar.value);
   }, searchTimeOffset);
 };
