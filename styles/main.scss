@@ -13,7 +13,8 @@ body {
   overflow: hidden;
   background: linear-gradient(45deg, darken($grey, 10%), darken($grey, 20%));
 }
-.top-bar {
+.top-bar,
+.second-bar {
   width: 100%;
   min-height: 10px;
   background-color: $grey;
@@ -43,5 +44,21 @@ body {
     border-radius: 25px;
     margin: 10px;
     max-width: 100%;
+  }
+}
+.color-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.color-filter {
+  cursor: pointer;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  .color-image {
+    pointer-events: none;
+    width: 50px;
+    margin: 5px;
   }
 }

@@ -4,11 +4,23 @@ import 'babel-polyfill';
 import 'promise-polyfill/src/polyfill';
 import 'whatwg-fetch';
 
+const elementsToBind = document.querySelectorAll('[data-bind]');
 const searchBar = document.querySelector('.search-bar');
-const searchTimeOffset = 500;
-const cardLimit = 10;
+const colors = document.querySelectorAll('.color-filter');
 const cardSection = document.querySelector('.cards');
+const searchTimeOffset = 500;
 let searchTimer;
+let colorFilter;
+
+const actionBinds = {
+  colorToggle: (e) => {
+    colors.forEach((element) => {
+      element.style.filter = '';
+    });
+    e.target.style.filter = 'invert(1)';
+    colorFilter = e.target.id;
+  },
+};
 
 const clearCards = () => {
   while (cardSection.firstChild) {
@@ -46,3 +58,7 @@ const keyPressHandler = (e) => {
 };
 
 searchBar.addEventListener('input', keyPressHandler, false);
+
+elementsToBind.forEach((element) => {
+  element.addEventListener('click', actionBinds[element.dataset.bind], false);
+});

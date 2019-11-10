@@ -11,9 +11,38 @@
 </head>
 
 <body>
-  <nav class="top-bar">
+  <section class="top-bar">
     <input type="text" class="search-bar" placeholder="Start Typing to Search">
-  </nav>
+  </section>
+  <section class="second-bar">
+    <ul class="color-filters">
+      <li>
+        <button id="w" data-bind="colorToggle" class="color-filter">
+          <img class="color-image" src="images/w.svg" alt="Filter White Cards">
+        </button>
+      </li>
+      <li>
+        <button id="u" data-bind="colorToggle" class="color-filter">
+          <img class="color-image" src="images/u.svg" alt="Filter Blue Cards">
+        </button>
+      </li>
+      <li>
+        <button id="b" data-bind="colorToggle" class="color-filter">
+          <img class="color-image" src="images/b.svg" alt="Filter Black Cards">
+        </button>
+      </li>
+      <li>
+        <button id="r" data-bind="colorToggle" class="color-filter">
+          <img class="color-image" src="images/r.svg" alt="Filter Red Cards">
+        </button>
+      </li>
+      <li>
+        <button id="g" data-bind="colorToggle" class="color-filter">
+          <img class="color-image" src="images/g.svg" alt="Filter Green Cards">
+        </button>
+      </li>
+    </ul>
+  </section>
   <section class="cards">
 
   </section>
