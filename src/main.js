@@ -57,6 +57,7 @@ const keyPressHandler = (e) => {
 };
 
 const overlayPopulate = (card) => {
+  console.log(card.rulings_uri);
   clearDiv(overlay);
 
   const cardImg = document.createElement('img');
