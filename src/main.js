@@ -61,7 +61,9 @@ const actionBinds = {
     });
     e.target.style.filter = 'invert(1)';
     colorFilter = e.target.id;
-    search(searchBar.value);
+    if (searchBar.value !== '') {
+      search(searchBar.value);
+    }
   },
   cardOverlay: (e) => {
     if (overlay.style.opacity === '') {
