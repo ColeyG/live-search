@@ -8,6 +8,13 @@ $white: #fbfff1;
   font-family: "Stoke", serif;
 }
 
+@mixin card() {
+  cursor: pointer;
+  border-radius: 25px;
+  margin: 10px;
+  max-width: 100%;
+}
+
 body {
   height: 100vh;
   overflow: hidden;
@@ -26,6 +33,21 @@ body {
   backdrop-filter: blur(5px);
   transition: 0.2s;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  .overlay-card {
+    @include card();
+  }
+  h2 {
+    @include stoke();
+    font-size: 32pt;
+    margin-bottom: 15px;
+  }
+  p {
+    @include stoke();
+  }
 }
 .top-bar,
 .second-bar {
@@ -54,11 +76,8 @@ body {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  cursor: pointer;
   .card {
-    border-radius: 25px;
-    margin: 10px;
-    max-width: 100%;
+    @include card();
   }
 }
 .color-filters {

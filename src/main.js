@@ -14,10 +14,14 @@ let saveData = '';
 let searchTimer;
 let colorFilter = '';
 
-const clearCards = () => {
-  while (cardSection.firstChild) {
-    cardSection.removeChild(cardSection.firstChild);
+const clearDiv = (div) => {
+  while (div.firstChild) {
+    div.removeChild(div.firstChild);
   }
+};
+
+const clearCards = () => {
+  clearDiv(cardSection);
 };
 
 const displayCard = (card) => {
@@ -56,6 +60,31 @@ const keyPressHandler = (e) => {
   }, searchTimeOffset);
 };
 
+const overlayPopulate = (card) => {
+  clearDiv(overlay);
+  console.log(card.oracle_text.replace(/\n/g, '<br>'));
+
+  const cardImg = document.createElement('img');
+  const textWrap = document.createElement('div');
+  const title = document.createElement('h2');
+  const cardText = document.createElement('p');
+
+  cardImg.className = 'overlay-card';
+
+  cardImg.src = card.image_uris.normal;
+  cardImg.alt = card.name;
+
+  title.append(document.createTextNode(card.name));
+  cardText.innerHTML = card.oracle_text.replace(/\n/g, '<br><br>');
+  // cardText.append(document.createTextNode(card.oracle_text.replace(/\n/g, '<br>')));
+
+  textWrap.append(title);
+  textWrap.append(cardText);
+
+  overlay.append(cardImg);
+  overlay.append(textWrap);
+};
+
 const actionBinds = {
   colorToggle: (e) => {
     colors.forEach((element) => {
@@ -78,7 +107,7 @@ const actionBinds = {
           thisCard = card;
         }
       });
-      console.log(thisCard);
+      overlayPopulate(thisCard);
     } else {
       overlay.style.opacity = '';
       overlay.style.pointerEvents = '';
