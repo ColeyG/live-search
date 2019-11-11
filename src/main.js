@@ -58,7 +58,6 @@ const keyPressHandler = (e) => {
 
 const overlayPopulate = (card) => {
   clearDiv(overlay);
-  console.log(card.oracle_text.replace(/\n/g, '<br>'));
 
   const cardImg = document.createElement('img');
   const textWrap = document.createElement('div');

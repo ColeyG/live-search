@@ -47,6 +47,7 @@ body {
   }
   p {
     @include stoke();
+    margin-bottom: 10px;
   }
 }
 .top-bar,
