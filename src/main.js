@@ -20,10 +20,6 @@ const clearDiv = (div) => {
   }
 };
 
-const clearCards = () => {
-  clearDiv(cardSection);
-};
-
 const displayCard = (card) => {
   const cardImg = document.createElement('img');
 
@@ -45,7 +41,7 @@ const search = (value) => {
   fetch(`https://api.scryfall.com/cards/search${query}`, { method: 'GET', mode: 'cors' })
     .then((resp) => resp.json())
     .then((data) => {
-      clearCards();
+      clearDiv(cardSection);
       saveData = data.data;
       data.data.forEach((card) => {
         displayCard(card);
@@ -76,7 +72,6 @@ const overlayPopulate = (card) => {
 
   title.append(document.createTextNode(card.name));
   cardText.innerHTML = card.oracle_text.replace(/\n/g, '<br><br>');
-  // cardText.append(document.createTextNode(card.oracle_text.replace(/\n/g, '<br>')));
 
   textWrap.append(title);
   textWrap.append(cardText);
