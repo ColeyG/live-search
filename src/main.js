@@ -8,6 +8,7 @@ const elementsToBind = document.querySelectorAll('[data-bind]');
 const searchBar = document.querySelector('.search-bar');
 const colors = document.querySelectorAll('.color-filter');
 const cardSection = document.querySelector('.cards');
+const overlay = document.querySelector('.overlay');
 const searchTimeOffset = 500;
 let searchTimer;
 let colorFilter = '';
@@ -63,7 +64,14 @@ const actionBinds = {
     search(searchBar.value);
   },
   cardOverlay: (e) => {
-    console.log(e.target.alt);
+    if (overlay.style.opacity === '') {
+      console.log(e.target.alt);
+      overlay.style.opacity = 1;
+      overlay.style.pointerEvents = 'auto';
+    } else {
+      overlay.style.opacity = '';
+      overlay.style.pointerEvents = '';
+    }
   },
 };
 
