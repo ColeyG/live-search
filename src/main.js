@@ -10,6 +10,7 @@ const colors = document.querySelectorAll('.color-filter');
 const cardSection = document.querySelector('.cards');
 const overlay = document.querySelector('.overlay');
 const searchTimeOffset = 500;
+let saveData = '';
 let searchTimer;
 let colorFilter = '';
 
@@ -41,6 +42,7 @@ const search = (value) => {
     .then((resp) => resp.json())
     .then((data) => {
       clearCards();
+      saveData = data.data;
       data.data.forEach((card) => {
         displayCard(card);
       });
@@ -67,9 +69,16 @@ const actionBinds = {
   },
   cardOverlay: (e) => {
     if (overlay.style.opacity === '') {
-      console.log(e.target.alt);
+      const targetCard = e.target.alt;
+      let thisCard;
       overlay.style.opacity = 1;
       overlay.style.pointerEvents = 'auto';
+      saveData.forEach((card) => {
+        if (targetCard === card.name) {
+          thisCard = card;
+        }
+      });
+      console.log(thisCard);
     } else {
       overlay.style.opacity = '';
       overlay.style.pointerEvents = '';
