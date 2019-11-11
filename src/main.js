@@ -25,6 +25,8 @@ const displayCard = (card) => {
 
   cardImg.src = card.image_uris.normal;
   cardImg.alt = card.name;
+  // eslint-disable-next-line no-use-before-define
+  cardImg.addEventListener('click', actionBinds.cardOverlay);
 
   cardSection.append(cardImg);
 };
@@ -59,6 +61,9 @@ const actionBinds = {
     e.target.style.filter = 'invert(1)';
     colorFilter = e.target.id;
     search(searchBar.value);
+  },
+  cardOverlay: (e) => {
+    console.log(e.target.alt);
   },
 };
 
