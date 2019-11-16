@@ -57,7 +57,6 @@ const keyPressHandler = (e) => {
 };
 
 const overlayPopulate = (card) => {
-  console.log(card.rulings_uri);
   clearDiv(overlay);
 
   const cardImg = document.createElement('img');
@@ -78,6 +77,19 @@ const overlayPopulate = (card) => {
 
   overlay.append(cardImg);
   overlay.append(textWrap);
+
+  fetch(card.rulings_uri, { method: 'GET', mode: 'cors' })
+    .then((resp) => resp.json())
+    .then((data) => {
+      const rulesText = document.createElement('p');
+      let rules = '';
+      rulesText.className = 'rule';
+      data.data.forEach((data) => {
+        rules += `<br>${data.comment}<br>`;
+      });
+      rulesText.innerHTML = rules;
+      textWrap.append(rulesText);
+    });
 };
 
 const actionBinds = {

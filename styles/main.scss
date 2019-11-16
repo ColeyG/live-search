@@ -60,6 +60,10 @@ body {
     @include stoke();
     margin-bottom: 10px;
   }
+  .rule {
+    color: $blue;
+    text-shadow: 0px 0px 1px black;
+  }
 }
 .top-bar,
 .second-bar {
