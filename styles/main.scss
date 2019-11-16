@@ -15,6 +15,17 @@ $white: #fbfff1;
   max-width: 100%;
 }
 
+@keyframes flipIn {
+  0% {
+    transform: rotate3d(0.25, 1, 0, 90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate3d(0, 1, 0, 0deg);
+    opacity: 1;
+  }
+}
+
 body {
   height: 100vh;
   overflow: hidden;
@@ -79,6 +90,7 @@ body {
   flex-wrap: wrap;
   .card {
     @include card();
+    animation: 0.4s flipIn;
   }
 }
 .color-filters {
